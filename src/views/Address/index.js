@@ -11,7 +11,6 @@ import {
   ScrollView
 } from 'react-native'
 import { Subheader, Button, ListItem, Divider, ActionButton } from 'react-native-material-ui'
-import CircleMenu from '@ramotion/react-native-circle-menu'
 import AppBar from 'Components/AppBar'
 import MapLocation from 'Components/MapLocation'
 import { ReduxField } from 'Components/FieldInput'
@@ -73,16 +72,11 @@ export default class Address extends Component{
           </View>
 
           <View style={[theme.column, theme.space]}>
-            <View>
-              <ReduxField
-                name='name'
-                label='Ubicación de'
-                placeholder='Ej: Casa'
-              />
-              <CircleMenu
-                items={addressIcons}
-              />              
-            </View>
+            <ReduxField
+              name='name'
+              label='Ubicación de'
+              placeholder='Ej: Casa'
+            />             
             <ReduxField
               name='address'
               label='Dirección'
