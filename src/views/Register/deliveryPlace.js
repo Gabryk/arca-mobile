@@ -65,7 +65,6 @@ export default class DeliveryPlace extends Component {
             <Subheader text={this.state.address}/>
           </View>
         </View>
-        <Divider/>
 
         <BottomButtons
           leftButton={{

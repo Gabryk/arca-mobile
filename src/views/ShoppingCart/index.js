@@ -12,6 +12,7 @@ import {
 import { Subheader, Button, ListItem, Divider, ActionButton } from 'react-native-material-ui'
 import AppBar from 'Components/AppBar'
 import OrderDetails from 'Components/OrderDetails'
+import EmptyCart from './empty'
 
 import styles from './styles'
 import theme from 'Theme/styles'
@@ -31,27 +32,14 @@ export default class ShoppingCart extends Component{
     if (!order)
       return(
         <View style={[theme.item, styles.container]}>
-         <AppBar action='goback' title=''/>
-          <View style={[theme.item, theme.vCenter, theme.hCenter]}>
-            <Text style={fonts.display1}>Esta orden ya no existe</Text>
-            <Text style={fonts.headline}>:O</Text>
-          </View>
+          <AppBar action='goback' title='Mis compras'/>
+          <EmptyCart/>
         </View>
       )
 
     return (
       <View style={[theme.item, styles.container]}>
-       <AppBar action='goback' title='Tu orden'/>
-
-        <View
-          style={[theme.row, theme.hCenter, theme.divider]}
-        >
-          <Button
-            primary
-            text='Ordenar'
-            onPress={() => history.push(`/purchase/${order.id}`)}
-          />
-        </View>
+       <AppBar action='goback' title='Mis compras'/>
 
         <View style={[theme.column, theme.space]}>
           <View>
@@ -74,9 +62,13 @@ export default class ShoppingCart extends Component{
             <Text>{crcFormat(order.total)}</Text>
           </View>
         </View>
-        <ActionButton
-          onPress={ () => history.push(`/products`)}
-        />
+
+        <View style={[theme.item, theme.spaceBetween, theme.vCenter, theme.hCenter]}>
+          <Button
+            raised primary
+            text='Pagar'
+            onPress={_ => history.push(`/purchase/${order.id}`)}/>
+        </View>
       </View>
     )
   }

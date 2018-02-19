@@ -11,6 +11,7 @@ import {
 import { Button, Divider } from 'react-native-material-ui'
 import { Text } from 'react-native-elements'
 import Agenda from './agenda'
+import BottomButtons from 'Components/BottomButtons'
 
 import styles from './styles'
 import theme from 'Theme/styles'
@@ -57,26 +58,19 @@ export default class DeliveryDate extends Component {
             runTime={runTime}
           />
         </View>
-        <Divider/>
 
-        <View
-          style={[
-            theme.row,
-            theme.spaceBetween,
-            theme.space,
-            styles.bottom
-          ]}
-        >
-          <Button
-            default
-            text='Saltar'
-          />
-          <Button
-            primary
-            text='Continuar'
-            onPress={this.submit}
-          />
-        </View>
+        <BottomButtons
+          leftButton={{
+            'default': true,
+            text: 'Saltar',
+            onPress: this.submit
+          }}
+          rightButton={{
+            primary: true,
+            text: 'Continuar',
+            onPress: this.submit
+          }}
+        />
       </View>
     )
   }
